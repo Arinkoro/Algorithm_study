@@ -27,16 +27,23 @@ def elatnes(num):
 def main():
     m = int(sys.argv[1])
     n = m - 1
-
     while(m % n != 0):
         n -= 1
-    d = m / n
+    d = int(m / n)
     answer = []
     answer.append(d)
-    while(m not in elatnes(m)):
-        m = n // d
+    while(n not in elatnes(m)):
+        if n % d == 0:
+            n = int(n / d)
+        else:
+            m = n
+            n = m - 1
+            while(m % n != 0):
+                n -= 1
+                d = int(m / n)
+
         answer.append(d)
-    answer.append(m)
+    answer.append(n)
     print(answer)
 
 
